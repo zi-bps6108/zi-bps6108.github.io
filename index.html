@@ -168,7 +168,7 @@
         </div>
     </footer>
 
-    <script>
+<script>
         // ==========================================
         // ⚙️ KONFIGURASI TAHUNAN
         // ==========================================
@@ -177,10 +177,10 @@
             startListYear: 2025,
             totalYearsToShow: 4
         };
-        // ==========================================
 
         document.getElementById('copyrightYear').textContent = new Date().getFullYear();
 
+        // Fungsi Render List Tahun
         function renderYearList() {
             const container = document.getElementById('yearsContainer');
             container.innerHTML = '';
@@ -189,30 +189,36 @@
                 const year = CONFIG.startListYear + i;
                 let cardHtml = '';
 
+                // --- LOGIKA TAHUN AKTIF (2025) ---
                 if (year === CONFIG.activeYear) {
+                    // Perhatikan: href diganti jadi onclick="navigateToYear(2025)"
                     cardHtml = `
-                    <a href="/${year}/" class="group relative flex flex-col items-center p-6 bg-slate-800 border border-indigo-900 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden ring-2 ring-indigo-500 ring-offset-2 ring-offset-slate-950">
+                    <div onclick="navigateToYear(${year})" class="group relative flex flex-col items-center p-6 bg-slate-800 border border-indigo-900 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden ring-2 ring-indigo-500 ring-offset-2 ring-offset-slate-950">
                         <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">AKTIF</div>
                         <div class="w-12 h-12 bg-indigo-900/50 text-indigo-400 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                             <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
                         </div>
                         <span class="text-2xl font-bold text-white">${year}</span>
                         <span class="text-xs text-slate-400 mt-1">Dashboard & Evaluasi</span>
-                        <div class="mt-4 w-full py-2 bg-indigo-600 text-white text-sm font-bold rounded-lg group-hover:bg-indigo-700 transition">Buka Aplikasi</div>
-                    </a>`;
+                        <div class="mt-4 w-full py-2 bg-indigo-600 text-white text-sm font-bold rounded-lg group-hover:bg-indigo-700 transition text-center">Buka Aplikasi</div>
+                    </div>`;
                 } 
+                
+                // --- LOGIKA TAHUN LAMA (ARSIP) ---
                 else if (year < CONFIG.activeYear) {
                     cardHtml = `
-                    <a href="/${year}/" class="group relative flex flex-col items-center p-6 bg-slate-900 border border-slate-800 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
+                    <div onclick="navigateToYear(${year})" class="group relative flex flex-col items-center p-6 bg-slate-900 border border-slate-800 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
                         <div class="absolute top-0 right-0 bg-slate-700 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">ARSIP</div>
                         <div class="w-12 h-12 bg-slate-800 text-slate-400 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                             <i data-lucide="archive" class="w-6 h-6"></i>
                         </div>
                         <span class="text-2xl font-bold text-slate-300">${year}</span>
                         <span class="text-xs text-slate-500 mt-1">Evaluasi Selesai</span>
-                        <div class="mt-4 w-full py-2 bg-slate-800 border border-slate-700 text-slate-300 text-sm font-bold rounded-lg group-hover:bg-slate-700 transition">Lihat Data</div>
-                    </a>`;
+                        <div class="mt-4 w-full py-2 bg-slate-800 border border-slate-700 text-slate-300 text-sm font-bold rounded-lg group-hover:bg-slate-700 transition text-center">Lihat Data</div>
+                    </div>`;
                 } 
+                
+                // --- LOGIKA TAHUN DEPAN (COMING SOON) ---
                 else {
                     cardHtml = `
                     <div class="relative flex flex-col items-center p-6 bg-slate-900/50 border border-slate-800 rounded-2xl opacity-75 grayscale cursor-not-allowed">
@@ -228,15 +234,40 @@
             }
             lucide.createIcons();
         }
-        renderYearList();
 
+        // ==========================================
+        // 🚀 FUNGSI NAVIGASI DENGAN LOADING
+        // ==========================================
+        function navigateToYear(year) {
+            // 1. Buat elemen loading Overlay
+            const loader = document.createElement('div');
+            loader.className = 'fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-slate-950/90 backdrop-blur-sm transition-opacity duration-300';
+            loader.innerHTML = `
+                <div class="w-16 h-16 border-4 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin mb-4"></div>
+                <div class="text-white font-semibold text-lg animate-pulse">Menyiapkan Dashboard ${year}...</div>
+                <div class="text-slate-400 text-sm mt-2">Mohon tunggu sebentar</div>
+            `;
+            
+            // 2. Tempel ke body
+            document.body.appendChild(loader);
+
+            // 3. Jeda sedikit (agar animasi terlihat), lalu pindah
+            setTimeout(() => {
+                window.location.href = `/${year}/`;
+            }, 100); 
+        }
+
+        // PWA Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('✅ Service Worker registered! Scope:', reg.scope))
-                    .catch(err => console.log('❌ Service Worker registration failed:', err));
+                    .then(reg => console.log('Service Worker registered!', reg.scope))
+                    .catch(err => console.log('SW failed:', err));
             });
         }
+
+        // Jalankan
+        renderYearList();
     </script>
 </body>
 </html>
