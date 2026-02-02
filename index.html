@@ -15,41 +15,48 @@
 
     <script>
         tailwind.config = {
-            darkMode: 'class', // Mengaktifkan mode gelap via class
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        bps: {
-                            blue: '#005596',
-                            orange: '#f7941d',
-                            green: '#7ab800'
-                        }
+                        bps: { blue: '#005596', orange: '#f7941d', green: '#7ab800' }
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Glass Effect Light Mode */
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.85);
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(226, 232, 240, 0.6);
         }
-        /* Glass Effect Dark Mode */
-        html.dark .glass-effect {
-            background: rgba(15, 23, 42, 0.85); /* Slate-900 */
+        html.dark .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
             border-bottom: 1px solid rgba(30, 41, 59, 0.6);
         }
-        
+        .hero-bg {
+            /* GANTI URL FOTO GEDUNG DI SINI */
+            background-image: url('https://lh5.googleusercontent.com/p/AF1QipP_sXq9XjFqgE7t_sXq9XjFqgE7t-placeholder.jpg'); 
+            /* Atau gunakan link foto gedung BPS Kapuas Hulu yang asli */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95));
+        }
+        html.light .hero-overlay {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.95));
+        }
         .gradient-text {
             background: linear-gradient(135deg, #2563eb, #4f46e5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         html.dark .gradient-text {
-            background: linear-gradient(135deg, #60a5fa, #818cf8); /* Lebih terang di dark mode */
+            background: linear-gradient(135deg, #60a5fa, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -65,7 +72,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-indigo-100 selection:text-indigo-700 dark:selection:bg-indigo-900 dark:selection:text-indigo-100 transition-colors duration-300">
 
-    <nav class="fixed w-full z-50 glass-effect transition-colors duration-300">
+    <nav class="fixed w-full z-50 glass-nav transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-3">
@@ -75,13 +82,11 @@
                         <p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wide">BPS KABUPATEN KAPUAS HULU</p>
                     </div>
                 </div>
-                
                 <div class="flex items-center gap-4">
-                    <button onclick="toggleTheme()" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                    <button onclick="toggleTheme()" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors focus:outline-none">
                         <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                         <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                     </button>
-
                     <a href="https://kapuashulukab.bps.go.id" target="_blank" class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition">
                         Website BPS <i data-lucide="external-link" class="w-4 h-4"></i>
                     </a>
@@ -90,79 +95,33 @@
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:border-indigo-800 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6 animate-fade-in-up">
-            <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span> Portal Resmi ZI
-        </div>
-        
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
-            Integritas itu Sikap, <br>
-            <span class="gradient-text">Bukan Spanduk</span>
-        </h1>
-        
-        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Sistem Informasi Pemantauan Aktivitas Lingkungan Zona Integritas. 
-            Pusat komando digital untuk monitoring LKE, Reform, dan manajemen bukti dukung BPS 6108.
-        </p>
+    <div class="relative pt-32 pb-20 overflow-hidden">
+        <div class="absolute inset-0 z-0 hero-bg"></div>
+        <div class="absolute inset-0 z-0 hero-overlay transition-colors duration-300"></div>
 
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-6">Pilih Tahun Pelaksanaan</h3>
+        <div class="relative z-10 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:border-indigo-800 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6 animate-fade-in-up shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span> Portal Resmi ZI
+            </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                Integritas itu Sikap, <br>
+                <span class="gradient-text">Bukan Spanduk</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Sistem Informasi Pemantauan Aktivitas Lingkungan Zona Integritas. 
+                Pusat komando digital untuk monitoring LKE, Reform, dan manajemen bukti dukung BPS 6108.
+            </p>
+
+            <div class="max-w-5xl mx-auto">
+                <h3 class="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-6">Pilih Tahun Pelaksanaan</h3>
                 
-                <a href="/2025/" class="group relative flex flex-col items-center p-6 bg-slate-100 border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-slate-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">
-                        ARSIP
+                <div id="yearsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     </div>
-                    <div class="w-12 h-12 bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                        <i data-lucide="archive" class="w-6 h-6"></i>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-700 dark:text-slate-300">2025</span>
-                    <span class="text-xs text-slate-500 dark:text-slate-500 mt-1">Evaluasi Selesai</span>
-                    <div class="mt-4 w-full py-2 bg-white border border-slate-300 text-slate-600 text-sm font-bold rounded-lg group-hover:bg-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:group-hover:bg-slate-700 transition">
-                        Lihat Data
-                    </div>
-                </a>
-
-                <a href="/2026/" class="group relative flex flex-col items-center p-6 bg-white border border-indigo-100 dark:bg-slate-800 dark:border-indigo-900 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden ring-2 ring-indigo-500 ring-offset-2 dark:ring-offset-slate-950">
-                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">
-                        AKTIF
-                    </div>
-                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-900 dark:text-white">2026</span>
-                    <span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Dashboard & Evaluasi</span>
-                    <div class="mt-4 w-full py-2 bg-indigo-600 text-white text-sm font-bold rounded-lg group-hover:bg-indigo-700 transition">
-                        Buka Aplikasi
-                    </div>
-                </a>
-
-                <div class="relative flex flex-col items-center p-6 bg-slate-50 border border-slate-200 dark:bg-slate-900/50 dark:border-slate-800 rounded-2xl opacity-75 grayscale cursor-not-allowed">
-                    <div class="absolute inset-0 bg-white/50 dark:bg-slate-950/50 backdrop-blur-[1px] z-10"></div>
-                    <div class="w-12 h-12 bg-slate-200 text-slate-400 dark:bg-slate-800 dark:text-slate-600 rounded-xl flex items-center justify-center mb-3">
-                        <i data-lucide="lock" class="w-6 h-6"></i>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-400 dark:text-slate-600">2027</span>
-                    <div class="absolute bottom-6 px-3 py-1 bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500 text-xs font-bold rounded-full z-20">
-                        COMING SOON
-                    </div>
-                </div>
-
-                <div class="relative flex flex-col items-center p-6 bg-slate-50 border border-slate-200 dark:bg-slate-900/50 dark:border-slate-800 rounded-2xl opacity-75 grayscale cursor-not-allowed">
-                    <div class="absolute inset-0 bg-white/50 dark:bg-slate-950/50 backdrop-blur-[1px] z-10"></div>
-                    <div class="w-12 h-12 bg-slate-200 text-slate-400 dark:bg-slate-800 dark:text-slate-600 rounded-xl flex items-center justify-center mb-3">
-                        <i data-lucide="lock" class="w-6 h-6"></i>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-400 dark:text-slate-600">2028</span>
-                    <div class="absolute bottom-6 px-3 py-1 bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500 text-xs font-bold rounded-full z-20">
-                        COMING SOON
-                    </div>
-                </div>
-
             </div>
         </div>
-    </section>
+    </div>
 
     <section class="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -214,14 +173,77 @@
             </div>
 
             <div class="text-xs opacity-50 border-t border-slate-800 pt-6">
-                &copy; 2026 BPS Kab. Kapuas Hulu. All rights reserved. <br>
+                &copy; <span id="copyrightYear">2026</span> BPS Kab. Kapuas Hulu. All rights reserved. <br>
                 Developed with ❤️ by Tim ZI 6108
             </div>
         </div>
     </footer>
 
     <script>
-        lucide.createIcons();
+        // ==========================================
+        // ⚙️ KONFIGURASI TAHUNAN (CUKUP UBAH INI)
+        // ==========================================
+        const CONFIG = {
+            activeYear: 2025,       // Tahun yang sedang berjalan (Aktif)
+            startListYear: 2025,    // Tahun pertama yang ditampilkan di list
+            totalYearsToShow: 4     // Berapa kotak tahun yang mau ditampilkan
+        };
+        // ==========================================
+
+        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+
+        // Fungsi Render List Tahun Otomatis
+        function renderYearList() {
+            const container = document.getElementById('yearsContainer');
+            container.innerHTML = '';
+
+            for (let i = 0; i < CONFIG.totalYearsToShow; i++) {
+                const year = CONFIG.startListYear + i;
+                let cardHtml = '';
+
+                // LOGIKA 1: TAHUN AKTIF (ACTIVE)
+                if (year === CONFIG.activeYear) {
+                    cardHtml = `
+                    <a href="/${year}/" class="group relative flex flex-col items-center p-6 bg-white border border-indigo-100 dark:bg-slate-800 dark:border-indigo-900 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden ring-2 ring-indigo-500 ring-offset-2 dark:ring-offset-slate-950">
+                        <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">AKTIF</div>
+                        <div class="w-12 h-12 bg-indigo-50 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-slate-900 dark:text-white">${year}</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Dashboard & Evaluasi</span>
+                        <div class="mt-4 w-full py-2 bg-indigo-600 text-white text-sm font-bold rounded-lg group-hover:bg-indigo-700 transition">Buka Aplikasi</div>
+                    </a>`;
+                } 
+                // LOGIKA 2: TAHUN LAMA (ARSIP)
+                else if (year < CONFIG.activeYear) {
+                    cardHtml = `
+                    <a href="/${year}/" class="group relative flex flex-col items-center p-6 bg-slate-100 border border-slate-200 dark:bg-slate-900 dark:border-slate-800 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-slate-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">ARSIP</div>
+                        <div class="w-12 h-12 bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                            <i data-lucide="archive" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-slate-700 dark:text-slate-300">${year}</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-500 mt-1">Evaluasi Selesai</span>
+                        <div class="mt-4 w-full py-2 bg-white border border-slate-300 text-slate-600 text-sm font-bold rounded-lg group-hover:bg-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:group-hover:bg-slate-700 transition">Lihat Data</div>
+                    </a>`;
+                } 
+                // LOGIKA 3: TAHUN DEPAN (COMING SOON)
+                else {
+                    cardHtml = `
+                    <div class="relative flex flex-col items-center p-6 bg-slate-50 border border-slate-200 dark:bg-slate-900/50 dark:border-slate-800 rounded-2xl opacity-75 grayscale cursor-not-allowed">
+                        <div class="absolute inset-0 bg-white/50 dark:bg-slate-950/50 backdrop-blur-[1px] z-10"></div>
+                        <div class="w-12 h-12 bg-slate-200 text-slate-400 dark:bg-slate-800 dark:text-slate-600 rounded-xl flex items-center justify-center mb-3">
+                            <i data-lucide="lock" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-slate-400 dark:text-slate-600">${year}</span>
+                        <div class="absolute bottom-6 px-3 py-1 bg-slate-200 text-slate-500 dark:bg-slate-800 dark:text-slate-500 text-xs font-bold rounded-full z-20">COMING SOON</div>
+                    </div>`;
+                }
+
+                container.innerHTML += cardHtml;
+            }
+            lucide.createIcons();
+        }
 
         // Fungsi Toggle Theme
         function toggleTheme() {
@@ -233,6 +255,9 @@
                 localStorage.theme = 'dark';
             }
         }
+
+        // Jalankan saat load
+        renderYearList();
     </script>
 </body>
 </html>
