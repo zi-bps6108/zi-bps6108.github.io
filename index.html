@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SI PALING ZI - Portal Integritas BPS 6108</title>
+    <meta name="description" content="Sistem Informasi Pemantauan Aktivitas Lingkungan Zona Integritas - BPS Kabupaten Kapuas Hulu">
+    
+    <link rel="icon" type="image/png" href="https://i.ibb.co.com/8L9dxQsw/logo-bps.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        bps: {
+                            blue: '#005596',
+                            orange: '#f7941d',
+                            green: '#7ab800'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-700">
+
+    <nav class="fixed w-full z-50 glass-effect border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <img src="https://i.ibb.co.com/8L9dxQsw/logo-bps.png" alt="Logo BPS" class="h-8 w-auto">
+                    <div>
+                        <h1 class="font-bold text-lg leading-none tracking-tight">SI PALING ZI</h1>
+                        <p class="text-[10px] text-slate-500 font-medium tracking-wide">BPS KABUPATEN KAPUAS HULU</p>
+                    </div>
+                </div>
+                <a href="https://kapuashulukab.bps.go.id" target="_blank" class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-indigo-600 transition">
+                    Website BPS <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-6 animate-fade-in-up">
+            <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span> Portal Resmi ZI
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            Integritas itu Sikap, <br>
+            <span class="gradient-text">Bukan Spanduk</span>
+        </h1>
+        
+        <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Sistem Informasi Pemantauan Aktivitas Lingkungan Zona Integritas. 
+            Pusat komando digital untuk monitoring LKE, Reform, dan manajemen bukti dukung BPS 6108.
+        </p>
+
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Pilih Tahun Pelaksanaan</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                
+                <a href="/2025/" class="group relative flex flex-col items-center p-6 bg-white border border-indigo-100 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden ring-2 ring-indigo-500 ring-offset-2">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">
+                        AKTIF
+                    </div>
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-slate-900">2025</span>
+                    <span class="text-xs text-slate-500 mt-1">Dashboard & Evaluasi</span>
+                    <div class="mt-4 w-full py-2 bg-indigo-600 text-white text-sm font-bold rounded-lg group-hover:bg-indigo-700 transition">
+                        Buka Aplikasi
+                    </div>
+                </a>
+
+                <div class="relative flex flex-col items-center p-6 bg-slate-50 border border-slate-200 rounded-2xl opacity-75 grayscale cursor-not-allowed">
+                    <div class="absolute inset-0 bg-white/50 backdrop-blur-[1px] z-10"></div> <div class="w-12 h-12 bg-slate-200 text-slate-400 rounded-xl flex items-center justify-center mb-3">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-slate-400">2026</span>
+                    <div class="absolute bottom-6 px-3 py-1 bg-slate-200 text-slate-500 text-xs font-bold rounded-full z-20">
+                        COMING SOON
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col items-center p-6 bg-slate-50 border border-slate-200 rounded-2xl opacity-75 grayscale cursor-not-allowed">
+                    <div class="absolute inset-0 bg-white/50 backdrop-blur-[1px] z-10"></div>
+                    <div class="w-12 h-12 bg-slate-200 text-slate-400 rounded-xl flex items-center justify-center mb-3">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-slate-400">2027</span>
+                    <div class="absolute bottom-6 px-3 py-1 bg-slate-200 text-slate-500 text-xs font-bold rounded-full z-20">
+                        COMING SOON
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col items-center p-6 bg-slate-50 border border-slate-200 rounded-2xl opacity-75 grayscale cursor-not-allowed">
+                    <div class="absolute inset-0 bg-white/50 backdrop-blur-[1px] z-10"></div>
+                    <div class="w-12 h-12 bg-slate-200 text-slate-400 rounded-xl flex items-center justify-center mb-3">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-slate-400">2028</span>
+                    <div class="absolute bottom-6 px-3 py-1 bg-slate-200 text-slate-500 text-xs font-bold rounded-full z-20">
+                        COMING SOON
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="flex flex-col items-start">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Monitoring Real-time</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Pantau progres pengumpulan bukti dukung LKE dan Reform secara langsung dengan visualisasi data interaktif.
+                    </p>
+                </div>
+                <div class="flex flex-col items-start">
+                    <div class="w-10 h-10 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="trophy"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Gamifikasi Kinerja</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Sistem leaderboard dan XP point untuk memotivasi agen perubahan dalam melengkapi dokumen tepat waktu.
+                    </p>
+                </div>
+                <div class="flex flex-col items-start">
+                    <div class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="folder-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Arsip Terstruktur</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Manajemen file yang rapi sesuai kode hirarki LKE, memudahkan pencarian dan evaluasi tahunan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-4 font-bold text-white text-lg tracking-wide">SI PALING ZI</p>
+            <p class="text-sm mb-6 leading-relaxed">
+                Badan Pusat Statistik Kabupaten Kapuas Hulu<br>
+                Jl. Antasari, Putussibau
+            </p>
+            
+            <div class="mb-8">
+                <a href="mailto:fayadh.abi@bps.go.id" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-indigo-400 text-sm font-medium rounded-full transition-colors duration-200 border border-slate-700">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    Hubungi Pengembang : fayadh.abi@bps.go.id
+                </a>
+            </div>
+
+            <div class="text-xs opacity-50 border-t border-slate-800 pt-6">
+                &copy; 2026 BPS Kab. Kapuas Hulu. All rights reserved. <br>
+                Developed with ❤️ by Tim ZI 6108
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
