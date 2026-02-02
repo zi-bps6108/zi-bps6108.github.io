@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zi-portal-v3'; // Ganti v3, v4 dst jika ada update besar
+const CACHE_NAME = 'zi-portal-v4'; // Ganti v3, v4 dst jika ada update besar
 const ASSETS_TO_CACHE = [
   '/',                     // Halaman Root
   '/index.html',           // File HTML Utama
