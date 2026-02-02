@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>SI Paling ZI</title>
+    
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="shortcut icon" href="icon.png">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <style>
+        /* Reset dasar */
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; /* Mencegah scroll pada body induk */
+            background-color: #fff; 
+        }
+        
+        /* CONTAINER UTAMA: Kunci layar mobile */
+        .iframe-container {
+            position: fixed; /* Mengunci posisi agar tidak terpengaruh address bar scroll */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; /* Memaksa berhenti tepat di atas nav bar browser */
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch; /* Scroll smooth di iOS */
+        }
+
+        iframe {
+            width: 100%;
+            border: none;
+            position: absolute;
+            left: 0;
+            
+            /* --- PENGATURAN POTONG BANNER GAS --- */
+            /* Anda menggunakan -4px, tapi biasanya banner GAS sekitar 24px-50px. 
+               Jika -4px sudah cukup untuk visual Anda, biarkan. 
+               Jika masih ada sisa abu-abu, coba ubah top ke -25px. */
+            top: -4px; 
+            
+            /* Kompensasi tinggi: 100% container + pixel yang ditarik ke atas */
+            height: calc(100% + 4px); 
+            
+            /* Tambahan agar render lebih tajam di HP */
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="iframe-container">
+        <iframe 
+            src="https://script.google.com/macros/s/AKfycbznc7vM_z6zskAufxjeg5q6xMjFFINFlHdltf57b7q352DEB-8XwAsMYVqT7jU2HhPL/exec"
+            allow="geolocation; microphone; camera">
+        </iframe>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+            .then(() => console.log('Service Worker Registered'))
+            .catch((error) => console.log('Service Worker Registration Failed', error));
+        }
+    </script>
+</body>
+</html>

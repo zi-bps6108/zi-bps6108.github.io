@@ -1,0 +1,16 @@
+{
+  "name": "SI Paling ZI",
+  "short_name": "SIPalingZI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "description": "soon or later..",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
