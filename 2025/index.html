@@ -1,79 +1,78 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>SI Paling ZI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip ZI 2025 - SI PALING ZI</title>
     
-    <link rel="icon" type="image/png" href="icon.png">
-    <link rel="shortcut icon" href="icon.png">
-
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon.png">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <style>
-        /* Reset dasar */
-        body, html { 
-            margin: 0; 
-            padding: 0; 
-            width: 100%; 
-            height: 100%; 
-            overflow: hidden; /* Mencegah scroll pada body induk */
-            background-color: #fff; 
-        }
-        
-        /* CONTAINER UTAMA: Kunci layar mobile */
-        .iframe-container {
-            position: fixed; /* Mengunci posisi agar tidak terpengaruh address bar scroll */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0; /* Memaksa berhenti tepat di atas nav bar browser */
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-            -webkit-overflow-scrolling: touch; /* Scroll smooth di iOS */
-        }
-
-        iframe {
-            width: 100%;
-            border: none;
-            position: absolute;
-            left: 0;
-            
-            /* --- PENGATURAN POTONG BANNER GAS --- */
-            /* Anda menggunakan -4px, tapi biasanya banner GAS sekitar 24px-50px. 
-               Jika -4px sudah cukup untuk visual Anda, biarkan. 
-               Jika masih ada sisa abu-abu, coba ubah top ke -25px. */
-            top: -4px; 
-            
-            /* Kompensasi tinggi: 100% container + pixel yang ditarik ke atas */
-            height: calc(100% + 4px); 
-            
-            /* Tambahan agar render lebih tajam di HP */
-            display: block;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="iframe-container">
-        <iframe 
-            src="https://script.google.com/macros/s/AKfycbzUo8AOy2j9suQXuqAJADCqHoVwsP2e6Bzl6XJi1kf3MuADK3JG_aSKqpGqJ0ANzjQbrQ/exec"
-            allow="geolocation; microphone; camera">
-        </iframe>
-    </div>
+    <link rel="icon" type="image/png" href="https://i.ibb.co.com/8L9dxQsw/logo-bps.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-            .then(() => console.log('Service Worker Registered'))
-            .catch((error) => console.log('Service Worker Registration Failed', error));
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
         }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen flex flex-col selection:bg-indigo-900 selection:text-indigo-100">
+
+    <nav class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <img src="https://i.ibb.co.com/8L9dxQsw/logo-bps.png" alt="Logo BPS" class="h-8 w-auto">
+                    <div>
+                        <h1 class="font-bold text-lg leading-none tracking-tight text-white">SI PALING ZI</h1>
+                        <p class="text-[10px] text-slate-400 font-medium tracking-wide">BPS KAB. KAPUAS HULU</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center pt-20 px-4 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-slate-800/20 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="max-w-lg w-full bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-slate-700 via-slate-500 to-slate-700"></div>
+
+            <div class="w-20 h-20 bg-slate-800 border border-slate-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <i data-lucide="archive-x" class="w-10 h-10 text-slate-400"></i>
+            </div>
+
+            <h2 class="text-3xl font-extrabold text-white mb-3 tracking-tight">Akses Ditutup</h2>
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-bold uppercase tracking-wider mb-6">
+                Siklus ZI 2025
+            </div>
+            
+            <p class="text-slate-400 leading-relaxed mb-8">
+                Proses pengumpulan bukti dukung, LKE, dan evaluasi Zona Integritas untuk tahun pelaksanaan 2025 telah selesai dan diarsipkan. Direktori ini tidak lagi menerima perubahan data.
+            </p>
+
+            <a href="/" class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-indigo-900/20 group border border-indigo-500 hover:border-indigo-400">
+                <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                Kembali ke Portal Utama
+            </a>
+        </div>
+    </main>
+
+    <footer class="py-6 text-center border-t border-slate-800 text-xs text-slate-500 relative z-10">
+        &copy; 2026 BPS Kab. Kapuas Hulu. Tim ZI 6108.
+    </footer>
+
+    <script>
+        // Inisialisasi ikon Lucide
+        lucide.createIcons();
     </script>
 </body>
 </html>
