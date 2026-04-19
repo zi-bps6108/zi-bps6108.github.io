@@ -173,8 +173,8 @@
         // ⚙️ KONFIGURASI TAHUNAN
         // ==========================================
         const CONFIG = {
-            activeYear: 2025,
-            startListYear: 2025,
+            activeYear: 2026, // Diubah menjadi 2026 sebagai tahun aktif
+            startListYear: 2025, // Tetap mulai dari 2025
             totalYearsToShow: 4
         };
 
@@ -189,9 +189,8 @@
                 const year = CONFIG.startListYear + i;
                 let cardHtml = '';
 
-                // --- LOGIKA TAHUN AKTIF (2025) ---
+                // --- LOGIKA TAHUN AKTIF (Sekarang 2026) ---
                 if (year === CONFIG.activeYear) {
-                    // Perhatikan: href diganti jadi onclick="navigateToYear(2025)"
                     cardHtml = `
                     <div onclick="navigateToYear(${year})" class="group relative flex flex-col items-center p-6 bg-slate-800 border border-indigo-900 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden ring-2 ring-indigo-500 ring-offset-2 ring-offset-slate-950">
                         <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">AKTIF</div>
@@ -204,17 +203,18 @@
                     </div>`;
                 } 
                 
-                // --- LOGIKA TAHUN LAMA (ARSIP) ---
+                // --- LOGIKA TAHUN LAMA / ARSIP (Misal: 2025) ---
                 else if (year < CONFIG.activeYear) {
+                    // Dibuat tidak bisa diakses: hapus onclick, kursor not-allowed, styling redup
                     cardHtml = `
-                    <div onclick="navigateToYear(${year})" class="group relative flex flex-col items-center p-6 bg-slate-900 border border-slate-800 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
+                    <div class="relative flex flex-col items-center p-6 bg-slate-900 border border-slate-800 rounded-2xl opacity-60 grayscale cursor-not-allowed overflow-hidden">
                         <div class="absolute top-0 right-0 bg-slate-700 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">ARSIP</div>
-                        <div class="w-12 h-12 bg-slate-800 text-slate-400 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                        <div class="w-12 h-12 bg-slate-800 text-slate-500 rounded-xl flex items-center justify-center mb-3">
                             <i data-lucide="archive" class="w-6 h-6"></i>
                         </div>
-                        <span class="text-2xl font-bold text-slate-300">${year}</span>
+                        <span class="text-2xl font-bold text-slate-400">${year}</span>
                         <span class="text-xs text-slate-500 mt-1">Evaluasi Selesai</span>
-                        <div class="mt-4 w-full py-2 bg-slate-800 border border-slate-700 text-slate-300 text-sm font-bold rounded-lg group-hover:bg-slate-700 transition text-center">Lihat Data</div>
+                        <div class="mt-4 w-full py-2 bg-slate-800 border border-slate-700 text-slate-500 text-sm font-bold rounded-lg text-center">Akses Ditutup</div>
                     </div>`;
                 } 
                 
@@ -251,10 +251,16 @@
             // 2. Tempel ke body
             document.body.appendChild(loader);
 
-            // 3. Jeda sedikit (agar animasi terlihat), lalu pindah
+            // 3. Jeda sedikit agar animasi terlihat, lalu arahkan ke URL
             setTimeout(() => {
-                window.location.href = `/${year}/`;
-            }, 100); 
+                if(year === 2026) {
+                    // Direct link untuk tahun 2026
+                    window.location.href = "https://script.google.com/macros/s/AKfycbzUo8AOy2j9suQXuqAJADCqHoVwsP2e6Bzl6XJi1kf3MuADK3JG_aSKqpGqJ0ANzjQbrQ/exec";
+                } else {
+                    // Fallback link untuk tahun lainnya (jika sewaktu-waktu diaktifkan)
+                    window.location.href = `/${year}/`;
+                }
+            }, 600); // Sedikit diperlama (600ms) agar loading effect lebih mulus
         }
 
         // PWA Service Worker Registration
